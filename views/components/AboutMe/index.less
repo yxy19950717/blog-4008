@@ -1,0 +1,167 @@
+.all-border-radius(@rad: 50%) {
+	border-radius: @rad;
+	-webkit-border-radius: @rad;
+}
+
+.all-opacity(@opa: 0.8) {
+	opacity: @opa;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.about-me-box {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 3;
+	width: 300px;
+	height: 100%;
+	background: #fff;
+}
+
+.about-me-top {
+	position: absolute;
+	width: 100%;
+	height: 180px;
+	background: #000;
+	opacity: 0.7;		
+}
+
+.about-me-content {
+	margin: 112px auto 0;
+	width: 76%;
+	text-align: center;
+	.about-me {
+		width: 100%;
+		.about-me-pic {
+			position: relative;
+			display: block;
+			margin: 0 auto;
+			width: 118px;
+			height: 118px;
+			border: 5px solid #fff;
+			overflow: hidden;
+			background: #88acdb;
+			.all-border-radius;
+			img {
+				width: 100%;
+				height: 100%;
+				opacity: 1;
+				.all-border-radius;
+			}
+		}
+		hgroup {
+			display: block;
+			a {
+				display: block;
+				margin: 31px 0px;
+				width: auto;
+				font-family: Roboto, "Roboto", serif;
+				text-align: center;
+				font-size: 30px;
+				color: #696969;
+				text-decoration: none;
+				outline: none;
+				&:hover {
+					color: #b0a0aa;
+				}
+			}
+		}	
+	}
+}
+
+.about-me-message {
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	line-height: 27px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif
+}
+
+.about-me-menu {
+	position: relative;
+	margin-top: 42px;
+	width: 100%;
+	min-height: 60px;
+	overflow: hidden;
+}
+
+.menu-area {
+	float: none;
+	display: block;
+	margin-left: -12px;
+	height: 60px;
+	font-weight: 300;
+	line-height: 31px;
+	cursor: pointer;
+	text-transform: uppercase;
+	text-align: center;	
+	ul {
+		list-style: none;
+		li {
+			cursor: default;
+			a {
+				font-size: 14px;
+				min-width: 300px;
+				color: #696969;
+				text-decoration: none;
+				font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+				&:hover {
+					color: #b0a0aa;
+				}
+			}
+		}
+	}
+}
+
+.about-me-keys {
+	position: relative;
+	margin-top: 46px;
+	width: 100%;
+	min-height: 20px;
+	overflow: hidden;
+	text-align: center;
+	.key-area {
+		height: 20px;
+		span {
+			letter-spacing: 0.5px;
+			color: #696969;
+			font-size: 12px;
+			font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+			cursor: pointer;
+			&:hover {
+				color: #b0a0aa;
+			}
+		}
+	}
+}
+
+.about-me-connect {
+	position: relative;
+	margin-top: 33px;
+	width: 100%;
+	min-height: 30px;
+	overflow: hidden;
+	.connect-area {
+		margin-left: 18px;
+		height: 30px;
+		span {
+			margin-right: 21px;
+			img {
+				width: 28px;
+				height: 28px;
+				cursor: pointer;
+				transition: all .3s;
+				.all-opacity(0.7);
+				&:hover {
+					.all-opacity(1);
+				}
+			}
+		}
+	}
+}

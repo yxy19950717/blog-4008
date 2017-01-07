@@ -1,0 +1,37 @@
+.list-single-content {
+	width: 270px;
+	height: 74px;
+	margin: 0 auto;
+	border-top: 1px solid #5d5d5d;
+	border-bottom: 1px solid #717171;
+	&:hover {
+		background-color: #4c4c4c;
+	}
+	.article-meta {
+		float: none;
+		display: block;
+		margin-top: 14px;
+		font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		font-size: 12px;
+		time {
+			color: #aaa;
+			&:before {
+				color: #aaa;
+				content: "\f017";
+				font: 18px FontAwesome;
+				margin-right: 6px;
+			}
+		}
+	}
+	h1 {	
+		.article-title {
+			display: block;
+			width: 270px;
+			color: #e5e5e5;
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}	
+	}
+}

@@ -1,0 +1,15 @@
+.transition(@time: 0.3s) {
+	transition: all @time;
+	-moz-transition: all @time;
+	-webkit-transition: all @time;
+	-o-transition: all @time;
+}
+.menu-article-content {
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	padding-top: 30px;
+	overflow-x: auto;
+	.transition;
+}

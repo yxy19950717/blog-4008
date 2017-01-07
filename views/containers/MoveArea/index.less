@@ -1,0 +1,131 @@
+.transition(@time: 0.3s) {
+	transition: all @time;
+	-moz-transition: all @time;
+	-webkit-transition: all @time;
+	-o-transition: all @time;
+}
+.move-area {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+	width: 300px;
+	height: 100%;
+	background: url('./move.png') repeat #5d5d5d;
+	.transition(0.5s);
+}
+.move-area-content {
+	width: 100%;
+	height: 100%;
+}
+.move-area-menu {
+	position: absolute;
+	top: 0px;
+	left: 300px;
+	z-index: 1;
+	p {
+		margin-bottom: 10px;
+		width: 0px;
+		height: 26px;
+		line-height: 28px;
+		color: #eaeaea;
+		border: 2px solid #fff;
+		border-left: none;
+		border-top-right-radius: 100px;
+		border-bottom-right-radius: 100px;
+		overflow: hidden;
+		text-indent: 4px;
+		font-size: 12px;
+		font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+		cursor: pointer;
+		.transition(0.3s);
+		span {
+			opacity: 0;
+			.transition(0.3s);
+		}
+		&:hover {
+			width: 60px !important;
+			opacity: 0.85 !important;
+			span {
+				opacity: 1 !important;
+			}
+		}
+	}
+	.menu-article {
+		background-color: #56bc8a;
+		position: relative;
+		i {
+			position: absolute;
+			right: 8px;
+			top: 1px;
+			display: inline-block;
+			&:after {
+				content: "\f02d";
+				font: 16px FontAwesome;
+			}
+		}
+	}
+	.menu-tag {
+		background-color: #a77dc2;
+		position: relative;
+		i {
+			position: absolute;
+			right: 7px;
+			top: 1px;
+			display: inline-block;
+			&:after {
+				content: "\f02c";
+				font: 16px FontAwesome;
+			}
+		}
+	}
+	.menu-me {
+		background-color: #f2992e;
+		position: relative;
+		i {
+			position: absolute;
+			right: 8px;
+			top: 1px;
+			display: inline-block;
+			&:after {
+				content: "\f11a";
+				font: 16px FontAwesome;
+			}
+		}
+	}
+}
+
+.menu-back {
+	background-color: #ba8f6c;
+	position: absolute;
+	bottom: 0px;
+	left: 300px;
+	i {
+		position: absolute;
+		right: 8px;
+		top: 1px;
+		display: inline-block;
+		&:after {
+			content: "\f100";
+			font: 16px FontAwesome;
+		}
+	}
+	width: 0px;
+	height: 26px;
+	line-height: 28px;
+	color: #eaeaea;
+	border: 2px solid #fff;
+	border-left: none;
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+	overflow: hidden;
+	text-indent: 4px;
+	font-size: 12px;
+	font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+	cursor: pointer;
+	.transition(0.3s);
+	&:hover {
+		width: 60px !important;
+		opacity: 0.85 !important;
+	}
+}

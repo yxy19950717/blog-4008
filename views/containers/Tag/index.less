@@ -1,0 +1,19 @@
+.transition(@time: 0.3s) {
+	transition: all @time;
+	-moz-transition: all @time;
+	-webkit-transition: all @time;
+	-o-transition: all @time;
+}
+.menu-tag-content {
+	position: absolute;
+	z-index: -100;
+	width: 100%;
+	height: 100%;
+	margin-top: 17px;
+	.transition;
+	.article-tag {
+		&:before {
+			content: '';
+		}
+	}
+}

@@ -1,0 +1,78 @@
+@font-face {
+	font-family: FontAwesome;
+	src: url("fontawesome-webfont.eot"),
+		url("fontawesome-webfont.ttf");
+}
+
+.all-transition(@time: 0.3s, @style: ease-in-out) {
+	transition: all @time @style;
+	-webkit-transition: all @time @style;
+	-moz-transition: all @time @style;
+	-ms-transition: all @time @style;
+}
+
+.all-border-radius(@rad: 50%) {
+	border-radius: @rad;
+	-webkit-border-radius: @rad;
+}
+
+.scale-transform(@s: 0.6) {
+	transform: scale(@s);
+	-moz-transform: scale(@s);
+	-webkit-transform: scale(@s);
+	-ms-transform: scale(@s);
+}
+
+.article {
+	margin: 30px;
+	position: relative;
+	border: 1px solid #ddd;
+	background: #fff;
+	opacity: 0;
+	font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+	.all-transition(0.6s);
+	.article-inner {
+		position: relative;
+		margin-bottom: 20px;
+		// 标题
+		.article-header {
+			border-left: 5px solid #4d4d4d;
+			padding: 30px 0px 23px 72px;
+		}
+		// 内容
+		.article-entry {
+			line-height: 1.8em;
+			padding-right: 30px;
+			padding-left: 76px;
+			margin-top: 10px;
+			p {
+				margin-top: 10px;
+			}
+			.article-more-link {
+				margin-top: 20px;
+				margin-left: 2px;
+				text-align: left;
+				a {
+					background-color: #4d4d4d;
+					color: #fff;
+					font-size: 12px;
+					padding: 2px 8px 4px;
+					line-height: 16px;
+					.all-border-radius(2px);
+					.all-transition;
+					text-decoration: none;
+					&:hover {
+						background-color: #3c3c3c;
+					}
+				}
+			}
+		}
+		// 标签
+		.article-info-index.article-info {
+			padding-top: 20px;
+			height: 25px;
+			margin: 30px 78px 0px 78px;
+			border-top: 1px solid #ddd;
+		}
+	}
+}
