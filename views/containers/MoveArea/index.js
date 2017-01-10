@@ -8,12 +8,12 @@ export default class MoveArea extends Component {
 		super(props);
 	}
 	render() {
-		let { articles, focusKey } = this.props;
+		let { articles, focusKey, tags, dispatch, tagToArticleArr } = this.props;
 		return (
 			<div className="move-area" id="move-area">
 				<div className="move-area-content">
 					<AList articles = { articles } />
-					<Tag />
+					<Tag tags = { tags } dispatch = { dispatch } tagToArticleArr = { tagToArticleArr } />
 					<MeText />
 				</div>
 				<div className="move-area-menu">
@@ -37,8 +37,8 @@ export default class MoveArea extends Component {
 			</div>
 		);
 	}
-	shouldComponentUpdate(nextPorps, nextState) {
-		if (this.props.focusKey == nextPorps.focusKey) {
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.focusKey == nextProps.focusKey && !nextProps.tagToArticleArr) {
 			return false;
 		} else {
 			return true;

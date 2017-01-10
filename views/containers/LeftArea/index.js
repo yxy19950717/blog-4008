@@ -12,7 +12,7 @@ export default class LeftArea extends Component {
 		};
 	}
 	render() {
-		let { articles } = this.props;
+		let { articles, tags, dispatch, tagToArticleArr } = this.props;
 		if (!articles) {
 			return (
 				<div className="container">
@@ -22,7 +22,14 @@ export default class LeftArea extends Component {
 			return(
 				<div className="container">
 					<AboutMe setKey={ this.setKey.bind(this) } />
-					<MoveArea setKey={ this.setKey.bind(this) } focusKey={ this.state.focusKey } articles={ articles }/>
+					<MoveArea 
+						setKey={ this.setKey.bind(this) } 
+						focusKey={ this.state.focusKey } 
+						articles={ articles } 
+						tags={ tags }
+						dispatch = { dispatch }
+						tagToArticleArr = { tagToArticleArr }
+					/>
 					{ this.props.children }
 				</div>
 			);

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './index.less';
 
 export default class ArticleTag extends Component {
 	render() {
 		let tagList = this.props.tags.map((tag, index) => {
+			let colorStyle = `color${tag.length % 5}`;
 			return (<li className="article-tag-list-item" key={index}>
-				<Link className="color3" to="/">{tag}</Link>
+				<span className={colorStyle} onClick={this.showTagToArticle.bind(this, tag)}>{tag}</span>
 			</li>);
 		});
 		return (			          
@@ -16,6 +16,14 @@ export default class ArticleTag extends Component {
 				</ul>
 			</div>			       
 		);
+	}
+
+	showTagToArticle(tag) {
+		this.props.showTagToArticle(tag);
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return false;
 	}
 }
 

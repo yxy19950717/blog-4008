@@ -4,8 +4,12 @@ import { ArticleTitle, ArticleTag, ArticleTime, ArticleText } from '../../compon
 import './index.less';
 
 export default class Article extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
-		let { year, month, day, title, tags, main, id} = this.props;
+		let { year, month, day, title, tags, main, id, showTagToArticle} = this.props;
 		return (
 			<article className="article" ref="article">
 				<div className="article-inner">
@@ -28,6 +32,7 @@ export default class Article extends Component {
 						/>
 						<ArticleTag 
 							tags = { tags }
+							showTagToArticle = {showTagToArticle.bind(this)}
 						/>
 						<div className="clearfix"></div>
 					</div>
@@ -40,7 +45,9 @@ export default class Article extends Component {
 			this.refs['article'].style.opacity = '1';
 		}.bind(this), 300);
 	}
+
 	shouldComponentUpdate(nextProps, nextState) {
 		return this.props.id == nextProps.id ? false : true;
 	}
+
 }

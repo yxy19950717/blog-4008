@@ -15,7 +15,9 @@ const HomeApp = connect(
 const LeftAreaApp = connect(
 	(state) => {
 		return {
-			articles: state.articleReducer.allArticles
+			articles: state.articleReducer.allArticles,
+			tags: state.articleReducer.tags,
+			tagToArticleArr: state.articleReducer.tagToArticleArr
 		};
 	}
 )(LeftArea);

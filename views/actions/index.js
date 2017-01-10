@@ -1,7 +1,8 @@
-import { loadAction, loadThisPageAction, loadThisArticleAction } from './article.js';
+import { loadAction, loadThisPageAction, loadThisArticleAction, loadTagToArticleAction } from './article.js';
 
 export {
 	loadAction,
 	loadThisPageAction,
-	loadThisArticleAction
+	loadThisArticleAction,
+	loadTagToArticleAction
 };

@@ -9,7 +9,7 @@ export default class AList extends Component {
 		let articleList = articles.map((article, index) => {
 			return (<A
 				key = { index }
-				isLast = { index + 1 == len ? true : false }
+				marginBottom = { index + 1 == len ? '80px' : '0px' }
 				article = { article }
 			/>);
 		});

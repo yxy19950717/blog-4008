@@ -4,11 +4,11 @@ import './index.less';
 
 export default class A extends Component {
 	render() {
-		let { isLast, article } = this.props;
+		let { isLast, article, marginBottom } = this.props;
 		let { title, year, month, day, id } = article;
 		return (
 			<div className="list-single-content" style={{
-				marginBottom: this.props.isLast ? '80px' : '0px'
+				marginBottom: marginBottom
 			}}>
 				<ArticleTime 
 					year = { year }
