@@ -10,9 +10,7 @@ export default class ArticleSelected extends Component {
 		let { articles, articleLen, params } = this.props;
 		let articleSelected = articles[articleLen - parseInt(params.id)];
 		return (
-			<div className="right-area" id="right-area" ref="loader"  style={{
-				left: document.getElementById('move-area') && document.getElementById('move-area').style.left == '300px' ? '600px' : '300px'
-			}}>
+			<div className="right-area" id="right-area" ref="loader">
 				<div className="right-area-wrap">
 					<article className="article" ref="article">
 						<div className="article-inner">
@@ -42,6 +40,7 @@ export default class ArticleSelected extends Component {
 		);
 	}
 	componentDidMount() {
+		document.getElementById('right-area').style.left = document.getElementById('move-area') && document.getElementById('move-area').style.left == '300px' ? '600px' : '300px';
 		document.body.scrollTop = 0;
 		setTimeout(function() {
 			this.refs['article'].style.opacity = '1';

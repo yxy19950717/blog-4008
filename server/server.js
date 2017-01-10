@@ -12,7 +12,18 @@ import { getIndexRendered } from './template/index';
 const app = express();
 
 // static route
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname + '/public'), {
+	dotfiles: 'ignore',
+	etag: true,
+	extensions: ['htm','html','css','png','gif','jpg','js','tpl'],
+	maxAge: '3600000',
+	redirect: true,
+	setHeaders: function (res, path, stat) {
+		res.set('x-timestamp', Date.now());
+		res.set('Vary', 'Accept-Encoding');
+		res.set('Cache-Control', 'public, max-age=3600');
+	}
+}));
 
 app.get('/', function(req, res) {
 	match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {

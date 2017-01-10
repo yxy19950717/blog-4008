@@ -34,7 +34,6 @@ const ArticleSelectedApp = connect(
 const routes = (
 	<Route path="/" component={ LeftAreaApp }>
 		<IndexRoute component={ HomeApp } />
-		// <Route path="tag" component={ YearList } />
 		<Route path="/articles/:id" component={ ArticleSelectedApp }></Route>
 	</Route>
 );

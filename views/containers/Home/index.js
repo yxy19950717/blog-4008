@@ -18,9 +18,7 @@ export default class Home extends Component {
 		let { articles, articleLen, dispatch } = this.props;
 		if (articles) {
 			return (
-				<div className="right-area" id="right-area" ref="loader" onWheel={ this.loadMoreArticles.bind(this) } style={{
-					left: document.getElementById('move-area') && document.getElementById('move-area').style.left == '300px' ? '600px' : '300px'
-				}}>
+				<div className="right-area" id="right-area" ref="loader" onWheel={ this.loadMoreArticles.bind(this) }>
 					<div className="right-area-wrap">
 						{
 							articles.map((article, index) => {
@@ -60,6 +58,7 @@ export default class Home extends Component {
 		}
 	}
 	componentDidMount() {
+		document.getElementById('right-area').style.left = document.getElementById('move-area') && document.getElementById('move-area').style.left == '300px' ? '600px' : '300px';
 		document.body.scrollTop = 0;
 	}
 	shouldComponentUpdate(nextProps, nextState) {
