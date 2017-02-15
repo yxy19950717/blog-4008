@@ -6,8 +6,9 @@ import axios from 'axios';
 import { loadAction } from './actions/index.js';
 import routes from './routes.js';
 import store from './store.js';
+import 'react-fastclick';
 
-axios.get('http://120.27.120.127:3000/getData').then((res) => {
+axios.get('https://www.yinxiangyu.com/getData').then((res) => {
 	store.dispatch(loadAction(res.data));
 	render(
 		<Provider store={store} key="index">
@@ -17,6 +18,3 @@ axios.get('http://120.27.120.127:3000/getData').then((res) => {
 	);
 });
 
-// if(module.hot) {
-// 	module.hot.accept();
-// }
