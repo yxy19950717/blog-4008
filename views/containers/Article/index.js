@@ -9,7 +9,7 @@ export default class Article extends Component {
 	}
 
 	render() {
-		let { year, month, day, title, tags, main, id, showTagToArticle} = this.props;
+		let { year, month, day, title, tags, main, id, showTagToArticle, dispatch} = this.props;
 		return (
 			<article className="article" ref="article">
 				<div className="article-inner">
@@ -17,6 +17,13 @@ export default class Article extends Component {
 						<ArticleTitle 
 							title = { title } 
 							id = { id }
+							dispatch = { dispatch }
+						/>
+						<ArticleTime 
+							mobileClass = { 'article-meta-mobile' }
+							year = { year }
+							month = { month }
+							day = { day } 
 						/>
 					</header>    
 					<ArticleText 
@@ -32,7 +39,6 @@ export default class Article extends Component {
 						/>
 						<ArticleTag 
 							tags = { tags }
-							showTagToArticle = {showTagToArticle.bind(this)}
 						/>
 						<div className="clearfix"></div>
 					</div>
@@ -40,6 +46,7 @@ export default class Article extends Component {
 			</article>
 		);
 	}
+
 	componentDidMount() {
 		setTimeout(function() {
 			this.refs['article'].style.opacity = '1';

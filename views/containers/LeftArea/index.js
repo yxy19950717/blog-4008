@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AboutMe } from '../../components/index.js';
-import { MoveArea } from '../index.js';
+import { MoveArea, BottomMusic } from '../index.js';
 import { loadArticle } from '../../actions/index.js';
 import './index.less';
 
@@ -12,7 +12,17 @@ export default class LeftArea extends Component {
 		};
 	}
 	render() {
-		let { articles, tags, dispatch, tagToArticleArr } = this.props;
+		let { 
+			articles, 
+			tags, 
+			dispatch,
+			tagToArticleArr,
+			musicData, 
+			moveAreaLeft, 
+			menuBackDisplay, 
+			focusKey,
+			device 
+		} = this.props;
 		if (!articles) {
 			return (
 				<div className="container">
@@ -21,23 +31,24 @@ export default class LeftArea extends Component {
 		} else {
 			return(
 				<div className="container">
-					<AboutMe setKey={ this.setKey.bind(this) } />
-					<MoveArea 
-						setKey={ this.setKey.bind(this) } 
-						focusKey={ this.state.focusKey } 
-						articles={ articles } 
-						tags={ tags }
-						dispatch = { dispatch }
-						tagToArticleArr = { tagToArticleArr }
+					<AboutMe 
+						location={ this.props.location.pathname }
+						dispatch={ dispatch }
 					/>
-					{ this.props.children }
+					<MoveArea 
+						focusKey={ focusKey } 
+						articles={ articles }
+						tags={ tags }
+						dispatch={ dispatch }
+						tagToArticleArr={ tagToArticleArr }
+						moveAreaLeft = { moveAreaLeft }
+						menuBackDisplay = { menuBackDisplay }
+						device = { device }
+					/>
+					{this.props.children}
+					<BottomMusic music={musicData}/>
 				</div>
 			);
 		}
-	}
-	setKey(key) {
-		this.setState({
-			focusKey: key
-		});
 	}
 }

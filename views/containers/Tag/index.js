@@ -11,24 +11,29 @@ export default class Tag extends Component {
 	}
 
 	render() {
-		
 		if (this.props.tagToArticleArr) {
 			let len = this.props.tagToArticleArr.length;
 			let articleList = this.props.tagToArticleArr.map((article, index) => {
 				return (<A
 					key = { index }
-					marginBottom = { index + 1 == len ? '280px' : '0px' }
+					marginBottom = { index + 1 == len ? '250px' : '0px' }
 					article = { article }
+					isLast = { index + 1 == len ? true : false }
+					dispatch = { this.props.dispatch } 
 				/>);
 			});
 			return (
-				<div className="menu-tag-content" id="menu-tag-content">
+				<div className="menu-tag-content" id="menu-tag-content" style={{
+					opacity: this.props.opacity,
+					zIndex: this.props.zIndex
+				}}>
 					<ArticleTag 
 						tags = {this.props.tags}
 						showTagToArticle = {this.showTagToArticle.bind(this)}
+						device = {this.props.device}
 					/>
 					<div className="menu-article-content" id="menu-article-content" style={{
-						marginTop: '180px'
+						marginTop: '150px'
 					}}>
 						{ articleList }
 					</div>
@@ -36,8 +41,12 @@ export default class Tag extends Component {
 			);
 		} else {
 			return (
-				<div className="menu-tag-content" id="menu-tag-content">
+				<div className="menu-tag-content" id="menu-tag-content" style={{
+					opacity: this.props.opacity,
+					zIndex: this.props.zIndex
+				}}>
 					<ArticleTag 
+						device = {this.props.device}
 						tags = {this.props.tags}
 						showTagToArticle = {this.showTagToArticle.bind(this)}
 					/>
@@ -52,13 +61,5 @@ export default class Tag extends Component {
 			this.lastTag = tag;
 			this.props.dispatch(loadTagToArticleAction(tag));
 		}	
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		if (!nextProps.tagToArticleArr) {
-			return false;
-		} else {
-			return true;
-		}
 	}
 }

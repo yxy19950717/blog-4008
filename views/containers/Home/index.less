@@ -4,6 +4,7 @@
 	-webkit-transition: all @time;
 	-o-transition: all @time;
 }
+
 .right-area {
 	position: absolute;
 	right: 0;
@@ -13,4 +14,19 @@
 	height: auto;
 	background: #eaeaea;
 	.transition(0.5s);
+}
+
+.right-area-parent {
+	width: auto;
+	height: 100%;
+}
+
+
+@media screen and (max-width: 768px){
+	.right-area {
+		position: relative;
+		left: 0 !important;
+		width: 100%;
+		height: auto;
+	}
 }

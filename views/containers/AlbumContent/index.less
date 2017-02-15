@@ -1,0 +1,73 @@
+.all-transition(@time: 0.3s, @style: ease-in-out) {
+	transition: all @time @style;
+	-webkit-transition: all @time @style;
+	-moz-transition: all @time @style;
+	-ms-transition: all @time @style;
+}
+
+.all-border-radius(@rad: 50%) {
+	border-radius: @rad;
+	-webkit-border-radius: @rad;
+}
+// 内容
+.album-entry {
+	line-height: 1.8em;
+	padding-right: 60px;
+	padding-left: 76px;
+	padding-bottom: 20px;
+	.all-transition(0.6s);
+	.album-month {
+		margin-top: 10px;
+		font-size: 16px;
+		span.month-text {
+			display: inline-block;
+			margin-left: 10px;
+			font-size: 14px;
+		}
+	}
+	.album-photo-box {
+		margin-top: 5px;
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		.album-photo-item {
+			cursor: pointer;
+			width: 25%;
+			height: 0;
+			padding-bottom: 25%;
+			
+			background-color: #eaeaea;
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+				.all-transition(.2s);
+				&:hover {
+					transform: scale(1.1, 1.1);
+				}
+			}
+		}
+	}
+}
+
+.realPic {
+	transition : all 0.5s;
+}
+
+@media screen and (max-width: 768px){
+	.album-entry {
+		padding: 0;
+		.album-month-box {
+			margin-bottom: 10px;
+		}
+		.album-month {
+			margin-top: 0px;
+		}
+		.album-photo-box {
+			.album-photo-item {
+				width: 50%;
+				padding-bottom: 50%;
+			}
+		}
+	}
+}

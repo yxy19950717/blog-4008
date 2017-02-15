@@ -1,7 +1,7 @@
 const LOADING = 'LOADING';
 const LOAD_THIS_PAGE = 'LOAD_THIS_PAGE';
-const LOAD_THIS_ARTICLE = 'LOAD_THIS_ARTICLE';
 const LOAD_TAG_TO_ARTICLE = 'LOAD_TAG_TO_ARTICLE';
+const LOAD_ALBUM = 'LOAD_ALBUM';
 
 const loadAction = (data) => {
 	return {
@@ -17,13 +17,6 @@ const loadThisPageAction = (pN) => {
 	};
 };
 
-const loadThisArticleAction = (id) => {
-	return {
-		type: LOAD_THIS_ARTICLE,
-		id
-	};
-};
-
 const loadTagToArticleAction = (tag) => {
 	return {
 		type: LOAD_TAG_TO_ARTICLE,
@@ -31,9 +24,15 @@ const loadTagToArticleAction = (tag) => {
 	};
 };
 
+const loadAlbumAction = () => {
+	return {
+		type: LOAD_ALBUM,
+	};
+};
+
 export {
 	loadAction,
 	loadThisPageAction,
-	loadThisArticleAction,
-	loadTagToArticleAction
+	loadTagToArticleAction,
+	loadAlbumAction
 };

@@ -5,11 +5,14 @@ import MoveArea from './MoveArea/index.js';
 import Tag from './Tag/index.js';
 import AList from './AList/index.js';
 import A from './A/index.js';
-import PageNav from './PageNav/index.js';
-import Year from './Year/index.js';
-import YearList from './YearList/index.js';
+// import PageNav from './PageNav/index.js';
 // import DevTools from './DevTools/index.js';
 import ArticleSelected from './ArticleSelected/index.js';
+import Album from './Album/index.js';
+import AlbumContent from './AlbumContent/index.js';
+// import Memory from './Memory/index.js';
+// import MemoryContent from './MemoryContent/index.js';
+import BottomMusic from './BottomMusic/index.js';
 
 export {
 	LeftArea,
@@ -19,9 +22,12 @@ export {
 	Tag,
 	AList,
 	A,
-	PageNav,
-	Year,
-	YearList,
-	ArticleSelected
-	// DevTools
+	// PageNav,
+	ArticleSelected,
+	// DevTools,
+	Album,
+	AlbumContent,
+	// Memory,
+	// MemoryContent,
+	BottomMusic
 };

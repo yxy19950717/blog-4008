@@ -5,8 +5,9 @@ let getIndexRendered = (html, initialState) => {
 		<head>
 			<meta charset="UTF-8">
 			<title>sharlly's personal site</title>
-			<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">  
-			<link type="text/css" rel="stylesheet" href="http://fast.yinxiangyu.com/app.css" />
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link href="//cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">  
+			<link href="//yxy-site.oss-cn-hangzhou.aliyuncs.com/app.css" rel="stylesheet">
 		</head>
 		<body>
 			<div id="app">
@@ -14,11 +15,10 @@ let getIndexRendered = (html, initialState) => {
 					${html}
 				</div>
 			</div>
-			<script>
-				
-			</script>
-			<script type="text/javascript" src="http://fast.yinxiangyu.com/client.js"></script>
-			<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+			<script type="text/javascript" src="//yxy-site.oss-cn-hangzhou.aliyuncs.com/client.js"></script>
+			<script src="//cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+			<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+			<script src="//apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
 		</body>
 		</html>
 	`;

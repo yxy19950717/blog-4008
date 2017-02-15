@@ -1,6 +1,5 @@
 const LOADING = 'LOADING';
 const LOAD_THIS_PAGE = 'LOAD_THIS_PAGE';
-const LOAD_THIS_ARTICLE = 'LOAD_THIS_ARTICLE';
 const LOAD_TAG_TO_ARTICLE = 'LOAD_TAG_TO_ARTICLE';
 
 const articleReducer = (state = {}, action) => {
@@ -13,6 +12,10 @@ const articleReducer = (state = {}, action) => {
 		return {
 			allArticles: action.data.articles,
 			tagToArticle: action.data.tagToArticle,
+			albumData: action.data.albumData,
+			memoryData: action.data.memoryData,
+			musicData: action.data.musicData,
+
 			articles: action.data.articles.slice(0, 5),
 			tags
 		};
@@ -20,13 +23,12 @@ const articleReducer = (state = {}, action) => {
 		return {
 			allArticles: state.allArticles,
 			tagToArticle: state.tagToArticle,
-			articles: state.allArticles.slice(0, action.pN * 5)
-		};
-	case LOAD_THIS_ARTICLE:
-		return {
-			allArticles: state.allArticles,
-			tagToArticle: state.tagToArticle,
-			articleSelected: state.allArticles[state.allArticles.length - action.id]
+			albumData: state.albumData,
+			memoryData: state.memoryData,
+			musicData: state.musicData,
+
+			articles: state.allArticles.slice(0, action.pN * 5),
+			tags: state.tags
 		};
 	case LOAD_TAG_TO_ARTICLE: 
 		var articleNumArr = state.tagToArticle[action.tag];
@@ -37,7 +39,11 @@ const articleReducer = (state = {}, action) => {
 		return {
 			allArticles: state.allArticles,
 			tagToArticle: state.tagToArticle,
-			articles: state.allArticles.slice(0, 5),
+			albumData: state.albumData,
+			memoryData: state.memoryData,
+			musicData: state.musicData,
+
+			articles: state.articles,
 			tagToArticleArr: articleArr.reverse()
 		};
 	default: 

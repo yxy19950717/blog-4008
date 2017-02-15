@@ -1,0 +1,198 @@
+.all-transition(@time: 0.3s, @style: ease-in-out) {
+	transition: all @time @style;
+}
+
+.show-photo {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background-color: #000;
+	font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	transition: all .5s ease-in-out;
+	.show-photo-head {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 44px;
+		line-height: 44px;
+		z-index: 2500;
+		background-color: rgba(0, 0, 0, 0.3);
+		.show-photo-count {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0 10px;
+			height: 44px;
+			line-height: 44px;
+			font-size: 13px;
+			color: #fff;
+			opacity: 0.75;
+		}
+		.show-photo-btn {
+			float: right;
+			opacity: 0.75;
+			width: 44px;
+			height: 44px;
+			border: 0;
+			outline: none;
+			margin: 0;
+			padding: 0;
+			background-size: 264px 88px;
+			cursor: pointer;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.show-photo-close {
+			background: url('//www.yinxiangyu.com/icon-btn.png') 0 -44px no-repeat;
+		}
+		.show-photo-zoom {
+			background: url('//www.yinxiangyu.com/icon-btn.png') -88px 0 no-repeat;
+		}
+	}
+	.show-photo-turn-left {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		z-index: 2500;
+		margin-top: -50px;
+		width: 70px;
+		height: 100px;
+		border: 0;
+		outline: none;
+		background-color: transparent;
+		opacity: 0.75;
+		cursor: pointer;
+		&:hover {
+			opacity: 1;
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			top: 35px;
+			left: 6px;
+			width: 32px;
+			height: 30px;
+			background: url('//www.yinxiangyu.com/icon-btn.png') -138px -44px no-repeat;
+			background-color: rgba(0,0,0,0.3);
+		}
+	}
+	.show-photo-turn-right {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		z-index: 2500;
+		margin-top: -50px;
+		width: 70px;
+		height: 100px;
+		border: 0;
+		outline: none;
+		background-color: transparent;
+		opacity: 0.75;
+		cursor: pointer;
+		&:hover {
+			opacity: 1;
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			top: 35px;
+			right: 6px;
+			width: 32px;
+			height: 30px;
+			background: url('//www.yinxiangyu.com/icon-btn.png') -94px -44px no-repeat;
+			background-color: rgba(0,0,0,0.3);
+		}
+	}
+	.show-photo-desc {
+		position: fixed;
+		bottom: 0;
+		z-index: 1000;
+		width: 100%;
+		height: auto;
+		line-height: 28px;
+		color: #ccc;
+		font-size: 13px;
+		background-color: rgba(0,0,0,0.3);
+		text-align: center;
+		span {
+			display: inline-block;
+			text-align: left;
+			width: auto;
+			max-width: 400px;
+			margin: 0 auto;
+			padding: 10px;
+			line-height: 20px;
+		}
+	}
+	.realImg {
+		position: fixed;
+		width: auto;
+		height: auto;
+		z-index: 1000;	
+		.all-transition(.3s);
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			margin: 0 auto;
+			cursor: move;
+		}
+	}
+}
+
+
+@media screen and (max-width: 768px){
+	.show-photo {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.show-photo-head {
+			position: fixed;
+			top: 0px;
+			.show-photo-zoom {
+				display: none;
+			}
+		}
+		.show-photo-turn-left {
+			width: 50px;
+			height: 80px;
+			margin-top: -40px;
+			background-color: rgba(0,0,0,0.7);
+			&:before {
+				background-color: transparent;
+				top: 25px;
+			}
+		}
+		.show-photo-turn-right {
+			width: 50px;
+			height: 80px;
+			margin-top: -40px;
+			background-color: rgba(0,0,0,0.7);
+			&:before {
+				background-color: transparent;
+				top: 25px;
+			}
+		}
+		.show-photo-desc {
+			position: fixed;
+			bottom: 0px;
+		}
+		.realImg {
+			position: absolute !important;
+			top: 50% !important;
+			margin-top: -50%;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

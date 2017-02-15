@@ -6,9 +6,9 @@ import './index.less';
 
 class ArticleTime extends Component {
 	render() {
-		let { year, month, day } = this.props; 
+		let { year, month, day, mobileClass } = this.props; 
 		return (			          
-			<div className="article-meta">
+			<div className={ mobileClass ? 'article-meta-mobile' : 'article-meta'}>
 				<time>{`${year}-${month}-${day}`}</time>
 			</div>		       
 		);

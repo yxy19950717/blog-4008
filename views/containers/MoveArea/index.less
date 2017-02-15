@@ -1,14 +1,14 @@
 .transition(@time: 0.3s) {
-	transition: all @time;
-	-moz-transition: all @time;
-	-webkit-transition: all @time;
-	-o-transition: all @time;
+	transition: all @time ease-out;
+	-moz-transition: all @time ease-out;
+	-webkit-transition: all @time ease-out;
+	-o-transition: all @time ease-out;
 }
 .move-area {
 	position: fixed;
 	top: 0px;
-	left: 0px;
-	z-index: 2;
+	transform: translate(-60px);
+	z-index: 10;
 	width: 300px;
 	height: 100%;
 	background: url('./move.png') repeat #5d5d5d;
@@ -98,7 +98,7 @@
 .menu-back {
 	background-color: #ba8f6c;
 	position: absolute;
-	bottom: 0px;
+	top: 123px;
 	left: 300px;
 	i {
 		position: absolute;
@@ -127,5 +127,102 @@
 	&:hover {
 		width: 60px !important;
 		opacity: 0.85 !important;
+	}
+}
+
+.menu-back-mobile {
+	display: none;
+}
+
+
+@media screen and (max-width: 768px){
+	.move-area {
+		position: fixed;
+		top: 0px;
+		transform: translate(-100%);
+		z-index: 300;
+		width: 88%;
+		height: 110%;
+		.transition(0.5s);
+	}
+	.move-area-content {
+		position: absolute;
+		top: 40px;
+	}
+	.move-area-menu {
+		position: absolute;
+		width: 272px;
+		height: 26px;
+		top: 10px;
+		left: 50%;
+		margin-left: -135px;
+		border: 1px solid #a0a0a0;
+		border-radius: 3px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		p {
+			float: left;
+			width: 90px !important;
+			border-radius: 0;
+			border: none; 
+			text-align: center;
+			&:hover {
+				width: 90px !important;
+				opacity: 1 !important;
+				span {
+					opacity: 1 !important;
+				}
+			}
+		}
+		.menu-article {
+			span {
+				opacity: 1 !important;
+			}
+			border-right: 1px solid #a0a0a0;
+			background-color: transparent;
+			i {
+				display: none;
+			}
+		}
+		.menu-tag {
+			span {
+				opacity: 1 !important;
+			}
+			border-right: 1px solid #a0a0a0;
+			background-color: transparent;
+			i {
+				display: none;
+			}
+		}
+		.menu-me {
+			span {
+				opacity: 1 !important;
+			}
+			background-color: transparent;
+			i {
+				display: none;
+			}
+		}
+		.menu-be-selected {
+			background-color: #333;
+			color: #fff;
+		}
+	}
+	.menu-back {
+		display: none;
+	}
+	.menu-back-mobile {
+		position: absolute;
+		display: none;
+		background: url('./move.png') repeat #5d5d5d;
+		width: 50% !important;
+		height: 100%;
+		border-radius: 0;
+		border: none;
+		left: 100%;
+		z-index: -100;
+		color: #eaeaea;
+		opacity: 0;
 	}
 }

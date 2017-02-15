@@ -1,38 +1,81 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { Link } from 'react-router';
+import { showMoveAreaAction } from '../../actions/index.js';
 import './index.less';
 
 export default class AboutMe extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			location: this.props.location.slice(0, 7)
+		};
+	}
+
 	render() {
 		return(
 			<div className="about-me-box">
 				<div className="about-me-top"></div>
 				<div className="about-me-content">
 					<div className="about-me">
-						<Link to="/" className="about-me-pic">
-							<img src={require('./sharlly.png')}/>
-						</Link>
+						<div className="about-me-pic">
+							<img src="//yxy-site.oss-cn-hangzhou.aliyuncs.com/sharlly.png" />
+						</div>
 						<hgroup>
-							<Link to="/">Sharlly</Link>
+							<span>Sharlly</span>
 						</hgroup>
 						<p className="about-me-message">
 							心有余而力不足的减肥Coder
 						</p>
 						<div className="about-me-menu">
 							<nav className="menu-area">
-								<ul>
-									<li key="home"><Link to="/">主页</Link></li>
-									<li key="albums"><Link to="/tags">相册</Link></li>
+								<ul className="menu-event">
+									<li 
+										key="home" 
+										className={ this.state.location == '/' ? 'menu-be-selected' : ''} 
+									>
+										<Link to="/" onClick={ this.changeLocation.bind(this, '/') }>主页</Link>
+									</li>
+									<li 
+										key="albums" 
+										className={ this.state.location == '/albums' ? 'menu-be-selected' : '' } 
+									>
+										<Link to="/albums" onClick={ this.changeLocation.bind(this, '/albums') }>相册</Link>
+									</li>
 								</ul>
 							</nav>
 						</div>
 						<div className="about-me-keys">
-							<nav className="key-area" onClick={this.showMoveArea.bind(this)}>
+							<nav 
+								className="key-area" 
+								onClick={this.showMoveAreaPC.bind(this)} 
+							>
 								<span data-key="menu-article">所有文章/</span>
 								<span data-key="menu-tag">标签/</span>
 								<span data-key="menu-me">关于我</span>
 							</nav>
+						</div>
+						<div className="about-me-shadow-mobile">
+							<ul className="about-me-shadow-mobile-list menu-event">
+								<li 
+									key="home"
+									className={ this.state.location == '/' ? 'menu-be-selected' : '' } 
+								>
+									<Link to="/" onClick={ this.changeLocation.bind(this, '/') }>主页</Link>
+								</li>
+								<li 
+									key="albums" 
+									className={ this.state.location == '/albums' ? 'menu-be-selected' : '' } 
+								>
+									<Link to="/albums" onClick={ this.changeLocation.bind(this, '/albums') }>相册</Link>
+								</li>
+							</ul>
+						</div>
+						<div 
+							className="about-me-keys-mobile" 
+							onClick={this.showMoveAreaM.bind(this)} 
+							data-device="mobile"
+						>
+							<i data-device="mobile"></i>
 						</div>
 						<div className="about-me-connect">
 							<nav className="connect-area">
@@ -46,23 +89,38 @@ export default class AboutMe extends Component {
 			</div>
 		);
 	}
+	componentDidMount() {
+		$('#app').delegate('.right-area', 'touchmove', function() {
+			if (document.body.scrollTop > 280) {
+				$('.about-me-shadow-mobile-list').css('display', 'flex');
+			} else {
+				$('.about-me-shadow-mobile-list').css('display', 'none');
+			}
+		});
+	}
 	shouldComponentUpdate(nextProps, nextState) {
-		return false;
-	}
-	showMoveArea(e) {
-		this.showTheBox();
-		this.showTheFoucs(e);
-	}
-	showTheBox() {
-		let box = document.getElementById('move-area');
-		let rightBox = document.getElementById('right-area');
-		box.style.left = '300px';
-		if (rightBox) {
-			rightBox.style.left = '600px';
+		if (this.state.location == nextState.location) {
+			return false;
+		} else {
+			return true;
 		}
 	}
-	showTheFoucs(e) {
-		let focus = document.getElementById(`menu-${e.target.dataset.key}`);
-		this.props.setKey(e.target.dataset.key);
+	changeLocation (location, e) {
+		this.setState({
+			location 
+		});
+	}
+	showMoveAreaM(e) {
+		e.preventDefault();
+		// 阻止滑动
+		$('body').css({
+			'top': -$('body')[0].scrollTop,
+			'position': 'fixed',
+			'overflow': 'hidden'
+		})
+		this.props.dispatch(showMoveAreaAction('0px', 'block', 'menu-article', 'm'));
+	}
+	showMoveAreaPC(e) {
+		this.props.dispatch(showMoveAreaAction('300px', 'none', e.target.dataset.key, 'pc'));
 	}
 }

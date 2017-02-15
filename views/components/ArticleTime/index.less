@@ -12,3 +12,27 @@
 		}
 	}
 }
+.article-meta-mobile {
+	display: none;
+}
+@media screen and (max-width: 768px){
+	.article-meta {
+		display: none;
+	}
+	.article-meta-mobile {
+		margin-top: 8px;
+		padding-bottom: 5px;
+		display: block;
+		width: 100%;
+		border-bottom: 1px dotted #ddd;
+		time {
+			color: #999;
+			&:before {
+				color: #999;
+				content: "\f017";
+				font: 20px FontAwesome;
+				margin-right: 10px;
+			}
+		}
+	}
+}

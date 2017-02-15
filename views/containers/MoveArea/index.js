@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MeText } from '../../components/index.js';
 import { Tag, AList } from '../index.js';
+import { showMoveAreaAction } from '../../actions/index.js';
 import './index.less';
 
 export default class MoveArea extends Component {
@@ -8,85 +9,151 @@ export default class MoveArea extends Component {
 		super(props);
 	}
 	render() {
-		let { articles, focusKey, tags, dispatch, tagToArticleArr } = this.props;
+		let { articles, focusKey, tags, dispatch, tagToArticleArr, moveAreaLeft, menuBackDisplay, device } = this.props;
 		return (
-			<div className="move-area" id="move-area">
-				<div className="move-area-content">
-					<AList articles = { articles } />
-					<Tag tags = { tags } dispatch = { dispatch } tagToArticleArr = { tagToArticleArr } />
-					<MeText />
+			<div className="move-area" id="move-area" style={{
+				transform: 'translate(' + moveAreaLeft + ')'
+			}} 	onMouseEnter = { this.setHidden.bind(this) }
+				onMouseLeave = { this.setAuto.bind(this) }
+			>
+				<div 
+					className="move-area-content" 
+				>
+					<AList 
+						articles = { articles } 
+						opacity = { focusKey == 'menu-article' ? 1 : 0 }
+						zIndex = { focusKey == 'menu-article' ? 0 : -200 }
+						dispatch = { dispatch } 
+					/>
+					<Tag 
+						tags = { tags } 
+						dispatch = { dispatch } 
+						tagToArticleArr = { tagToArticleArr } 
+						opacity = { focusKey == 'menu-tag' ? 1 : 0 }
+						zIndex = { focusKey == 'menu-tag' ? 0 : -200 }
+						device = { device }
+					/>
+					<MeText 
+						opacity = { focusKey == 'menu-me' ? 1 : 0 }
+						zIndex = { focusKey == 'menu-me' ? 0 : -200 }
+					/>
 				</div>
 				<div className="move-area-menu">
-					<p className="menu-article" id="menu-article" onClick={ this.changeFocus.bind(this, 'menu-article') }>
-						<span>全部</span>
+					<p 
+						className={
+							focusKey == 'menu-article' ? 'menu-article menu-be-selected' : 'menu-article'
+						}
+						id="menu-article" 
+						onClick={ this.changeFocus.bind(this, 'menu-article') }
+						style={{
+							width: focusKey == 'menu-article' ? '60px' : '40px'
+						}}
+					>
+						<span style={{
+							opacity: focusKey == 'menu-article' ? 1 : 0
+						}}>全部</span>
 						<i></i>
 					</p>
-					<p className="menu-tag" id="menu-tag" onClick={ this.changeFocus.bind(this, 'menu-tag') }>
-						<span>标签</span>
+					<p 
+						className={
+							focusKey == 'menu-tag' ? 'menu-tag menu-be-selected' : 'menu-tag'
+						} 
+						id="menu-tag" 
+						onClick={ this.changeFocus.bind(this, 'menu-tag') }
+						style={{
+							width: focusKey == 'menu-tag' ? '60px' : '40px'
+						}}
+					>
+						<span style={{
+							opacity: focusKey == 'menu-tag' ? 1 : 0
+						}}>标签</span>
 						<i></i>
 					</p>
-					<p className="menu-me" id="menu-me" onClick={ this.changeFocus.bind(this, 'menu-me') }>
-						<span>我</span>
+					<p 
+						className={
+							focusKey == 'menu-me' ? 'menu-me menu-be-selected' : 'menu-me'
+						} 
+						id="menu-me" 
+						onClick={ this.changeFocus.bind(this, 'menu-me') }
+						style={{
+							width: focusKey == 'menu-me' ? '60px' : '40px'
+						}}
+					>
+						<span style={{
+							opacity: focusKey == 'menu-me' ? 1 : 0
+						}}>我</span>
 						<i></i>
 					</p>
 				</div>
-				<p className="menu-back" id="menu-back" onClick={ this.menuBack.bind(this) }>
+				<p 
+					className="menu-back" 
+					id="menu-back" 
+					onClick={ this.menuBackPC.bind(this) }
+					style={{
+						width: '60px'
+					}}
+				>
 					<span>收起</span>
 					<i></i>
+				</p>
+				<p 
+					className="menu-back-mobile" 
+					id="menu-back-mobile" 
+					data-device="mobile"
+					style={{
+						display: menuBackDisplay
+					}}
+					onClick={ this.menuBackM.bind(this) }
+				>
 				</p>
 			</div>
 		);
 	}
+
+	menuBackPC() {
+		this.props.dispatch(showMoveAreaAction('-62px', 'none', 'none', 'pc'));
+	}
+	menuBackM(e) {
+		e.preventDefault();
+		// 取消阻止滑动
+		let body = $('body');
+		body.css('position', 'relative');
+		body[0].scrollTop = -body.offset().top;
+		body.css({
+			'top': 'auto',
+			'overflow': 'auto'
+		});
+
+		this.props.dispatch(showMoveAreaAction('-100%', 'none', 'none', 'm'));
+	}
+
 	shouldComponentUpdate(nextProps, nextState) {
 		if (this.props.focusKey == nextProps.focusKey && !nextProps.tagToArticleArr) {
-			return false;
+			if (this.props.moveAreaLeft != nextProps.moveAreaLeft) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return true;
 		}
 	}
-	componentDidUpdate() {
-		let { focusKey } = this.props;
-		if (focusKey) {
-			let back = document.getElementById('menu-back');
-			let focus = document.getElementById(focusKey);
-			let text = focus.getElementsByTagName('span')[0];
-			let parent = focus.parentNode;
-			let sbiling = parent.getElementsByTagName('p');
-			back.style.width = '60px';
-			// sbiling 类型数组，不能用forEach
-			for (let i = 0; i < sbiling.length; i++) {
-				if (focus !== sbiling[i]) {
-					sbiling[i].style.width = '40px';
-					sbiling[i].style.opacity = '1';
-					sbiling[i].getElementsByTagName('span')[0].style.opacity = '0';
-				}
-			}
-			focus.style.width  = '60px';
-			focus.style.opacity = '0.85';
-			text.style.opacity = '1';
-			// 区域
-			let showContent = document.getElementById(focusKey + '-content');
-			let showContentParent = showContent.parentNode;
-			let showContentSibiling = showContentParent.childNodes;
-			for (let j = 0; j < showContentSibiling.length; j++) {
-				if (showContent !== showContentSibiling[j]) {
-					showContentSibiling[j].style.opacity = '0';
-					showContentSibiling[j].style.zIndex = '-200';
-				}
-			}
-			showContent.style.zIndex = '0';
-			showContent.style.opacity = '1';
+	changeFocus(key, e) {
+		e.preventDefault();
+		if (this.props.moveAreaLeft == '0px') {
+			this.props.dispatch(showMoveAreaAction('0px', 'block', key, 'm'));
+		} else {
+			this.props.dispatch(showMoveAreaAction('300px', 'none', key, 'pc'));
 		}
 	}
-	changeFocus(key) {
-		this.props.setKey(key);
+
+	setAuto() {
+		// 取消阻止滑动
+		$('body').css('overflow', 'auto');
 	}
-	menuBack() {
-		let box = document.getElementById('move-area');
-		let rightBox = document.getElementById('right-area');
-		box.style.left = '-60px';
-		if (rightBox) {
-			rightBox.style.left = '300px';
-		}
+
+	setHidden() {
+		// 阻止滑动
+		$('body').css('overflow', 'hidden');
 	}
 }

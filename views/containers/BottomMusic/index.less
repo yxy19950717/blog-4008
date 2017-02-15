@@ -1,0 +1,399 @@
+.bottom-music {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 400;
+	width: 100%;
+	height: 53px;
+	font-size: 12px;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	.bm-bg {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 53px;
+		background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+	}
+	.bm-wrap {
+		position: absolute;
+		left: 50%;
+		top: 6px;
+		z-index: 401;
+		width: 920px;
+		height: 53px;
+		margin: 0 auto;
+		margin-left: -460.5px;
+		.bm-btns {
+			float: left;
+			width: 137px;
+			padding: 6px 0 0 0;
+			span {
+				display: block;
+				float: left;
+				width: 28px;
+				height: 28px;
+				margin-right: 8px;
+				margin-top: 5px;
+				text-indent: -9999px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+			}
+			.bm-btns-prev {
+				cursor: pointer;
+				background-position: 0 -130px;
+				&:hover {
+					background-position: -30px -130px;
+				}
+			}
+			.bm-btns-play {
+				width: 36px;
+				height: 36px;
+				margin-top: 0px;
+				cursor: pointer;
+				background-position: 0 -165px;
+				&:hover {
+					background-position: -40px -165px;
+				}
+			}
+			.bm-btns-stop {
+				width: 36px;
+				height: 36px;
+				margin-top: 0px;
+				cursor: pointer;
+				background-position: 0 -204px;
+				&:hover {
+					background-position: -40px -204px;
+				}
+			}
+			.bm-btns-next {
+				cursor: pointer;
+				background-position: -80px -130px;
+				&:hover {
+					background-position: -110px -130px;
+				}
+			}
+		}
+
+		.bm-logo {
+			position: relative;
+			margin: 6px 15px 0 0;
+			width: 34px;
+			height: 34px;
+			float: left;
+			cursor: pointer;
+			img {
+				width: 34px;
+				height: 34px;
+				border: 0;
+			}
+			span {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				width: 34px;
+				height: 35px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+				background-position: 0 -80px;
+			}
+		}
+
+		.bm-play {
+			position: relative;
+			width: 608px;
+			float: left;
+			.bm-words {
+				height: 28px;
+				overflow: hidden;
+				color: #e8e8e8;
+				text-shadow: 0 1px 0 #171717;
+				line-height: 28px;
+				.bm-words-name {
+					float: left;
+					max-width: 300px;
+					color: #e8e8e8;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					word-wrap: normal;
+				}
+				.bm-words-singer {
+					max-width: 220px;
+					margin-left: 15px;
+					color: #9b9b9b;
+				}
+			}
+		}
+
+
+		.bm-pbar {
+			position: relative;
+			width: 500px;
+			.bm-pbar-bg {
+				width: 500px;
+				height: 9px;
+				background: url('//www.yinxiangyu.com/statbar.png') repeat-x 0 0;
+				background-position: right 0;
+				.bm-ready {
+					width: 0%;
+					height: 9px;
+					background: url('//www.yinxiangyu.com/statbar.png') repeat-x 0 0;
+					background-position: right -30px;
+				}
+				.bm-listen {
+					width: 0%;
+					height: 9px;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: url('//www.yinxiangyu.com/statbar.png') repeat-x 0 0;
+					background-position: left -66px;
+					span {
+						position: absolute;
+						top: -7px;
+						right: -13px;
+						width: 22px;
+						height: 24px;
+						margin-left: -11px;
+						background: url('//www.yinxiangyu.com/iconall.png') repeat-x 0 0;
+						background-position: 0 -250px;
+						cursor: pointer;
+						&:hover {
+							background-position: 0 -280px;
+						}
+						i {
+							visibility: hidden;
+							position: absolute;
+							left: 5px;
+							top: 5px;
+							width: 12px;
+							height: 12px;
+						}
+					}
+				}
+			}
+			.bm-time {
+				position: absolute;
+				top: -3px;
+				right: -84px;
+				color: #797979;
+				text-shadow: 0 1px 0 #121212;
+				em {
+					color: #a1a1a1;
+					font-style: normal;
+				}
+			}
+		}
+
+
+		.bm-ctrl {
+			position: relative;
+			float: left;
+			z-index: 401;
+			width: 113px;
+			padding-left: 13px;
+			.bm-ctrl-vol {
+				display: none;
+				position: absolute;
+				top: -113px;
+				left: 9px;
+				clear: both;
+				width: 32px;
+				height: 113px;
+				.bm-ctrl-vol-barbg {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 32px;
+					height: 113px;
+					background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+					background-position: 0 -503px;
+				}
+				.bm-ctrl-vol-vbg {
+					padding: 4px 0;
+					position: absolute;
+					left: 14px;
+					top: 7px;
+					width: 4px;
+					height: 93px;
+					.bm-ctrl-vol-curr {
+						position: absolute;
+						top: auto;
+						bottom: 4px;
+						left: 0;
+						width: 4px;
+						height: 39px;
+						background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+						background-position: -40px bottom;
+						overflow: hidden;
+					}
+					.bm-ctrl-vol-change {
+						position: absolute;
+						top: 47px;
+						left: -7px;
+						width: 18px;
+						height: 20px;
+						background: url('//www.yinxiangyu.com/iconall.png') repeat-x 0 0;
+						background-position: -40px -250px;
+						cursor: pointer;
+						&:hover {
+							background-position: -40px -280px;
+						}
+					}
+				}
+			}
+			.bm-ctrl-vol-btn {
+				float: left;
+				width: 25px;
+				height: 25px;
+				margin: 11px 2px 0 0;
+				text-indent: -9999px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+				background-position: -2px -248px;
+				cursor: pointer;
+				&:hover {
+					background-position: -31px -248px;
+				}
+			}
+			.bm-ctrl-loop-btn {
+				float: left;
+				width: 25px;
+				height: 25px;
+				margin: 11px 2px 0 0;
+				text-indent: -9999px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+				background-position: -3px -344px;
+				cursor: pointer;
+				&:hover {
+					background-position: -33px -344px;
+				}
+			}
+			.bm-ctrl-loop-btn-2 {
+				float: left;
+				width: 25px;
+				height: 25px;
+				margin: 11px 2px 0 0;
+				text-indent: -9999px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+				background-position: -66px -344px;
+				cursor: pointer;
+				&:hover {
+					background-position: -93px -344px;
+				}
+			}
+			.bm-ctrl-all-btn {
+				margin-top: 10px;
+				float: left;
+				width: 38px;
+				height: 25px;
+				line-height: 27px;
+				padding-left: 21px;
+				background: url('//www.yinxiangyu.com/playbar.png') repeat-x 0 0;
+				background-position: -42px -68px;
+				color: #666;
+				text-align: center;
+				text-shadow: 0 1px 0 #080707;
+				cursor: pointer;
+				&:hover {
+					background-position: -42px -98px;
+				}
+			}
+		}
+	}
+
+	.bm-box {
+		display: none;
+		position: relative;
+		width: 100%;
+		height: 53px;
+		.bm-box-all {
+			position: absolute;
+			bottom: 47px;
+			right: 0;
+			width: 370px;
+			height: 261px;
+			.bm-box-all-head {
+				width: 370px;
+				height: 37px; 
+				background: url('//www.yinxiangyu.com/playlist_bg_2.png') no-repeat 1px 0;
+				p {
+					line-height: 37px;
+					text-indent: 28px;
+					color: #ccc;
+				}
+			}
+			.bm-box-all-content {
+				height: 224px;
+				background: url('//www.yinxiangyu.com/playlist_bg.png') repeat-y 0 0;
+				background-position: -1014px 0;
+				list-style: none;
+				overflow-y: auto;
+				overflow-x: hidden;
+				.bm-box-play-now {
+					background-color: rgba(0, 0, 0, 0.3)
+				}
+				li {
+					width: 368px;
+					margin-left: 2px;
+					height: 26px;
+					cursor: pointer;
+					&:hover {
+						background-color: rgba(0, 0, 0, 0.3)
+					}
+					.bm-box-play {
+						float: left;
+						padding-left: 12px;
+						padding-right: 9px;
+						height: 26px;
+						line-height: 26px;
+						width: 10px;
+						.bm-box-play-icon {
+							width: 10px;
+							height: 13px;
+							margin-top: 7px;
+							background: url('//www.yinxiangyu.com/playlist.png') no-repeat 0 0;
+							background-position: -182px 0;
+						}
+					}
+					.bm-box-play-name {
+						float: left;
+						width: 175px;
+						height: 26px;
+						line-height: 26px;
+						color: #ccc;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					.bm-box-play-singer {
+						float: left;
+						width: 90px;
+						height: 26px;
+						line-height: 26px;
+						color: #aaa;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					.bm-box-play-time {
+						float: left;
+						width: 50px;
+						height: 26px;
+						line-height: 26px;
+						color: #888;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px){
+	.bottom-music {
+		display: none;
+	}
+}

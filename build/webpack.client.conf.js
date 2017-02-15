@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var babel_loader = 'babel?presets[]=react,presets[]=es2015';
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -30,11 +31,11 @@ module.exports = {
       },
       {
         test: /\.css/,
-        loader: 'style-loader!css-loader'
+        loader: ExtractTextPlugin.extract('style', ['css'])
       },
       {
         test: /\.less/,
-        loader: 'style!css!less!'
+        loader: ExtractTextPlugin.extract('style', ['css', 'less'])
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -45,5 +46,8 @@ module.exports = {
         loader: 'url',
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('nouse.css'),
+  ]
 }

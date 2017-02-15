@@ -1,9 +1,11 @@
 .list-single-content {
+	display: block;
 	width: 270px;
 	height: 74px;
 	margin: 0 auto;
 	border-top: 1px solid #5d5d5d;
 	border-bottom: 1px solid #717171;
+	text-decoration: none;
 	&:hover {
 		background-color: #4c4c4c;
 	}
@@ -33,5 +35,15 @@
 			text-overflow: ellipsis;
 			white-space: nowrap;
 		}	
+	}
+}
+
+.list-single-content-mobile {
+	display: block;
+}
+
+@media screen and (max-width: 768px){
+	.list-single-content-mobile {
+		margin-bottom: 130px !important;
 	}
 }

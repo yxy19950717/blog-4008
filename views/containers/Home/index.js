@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Article } from '../index.js';
 import { Footer } from '../../components/index.js';
-import { loadArticle, loadThisPageAction, loadTagToArticleAction } from '../../actions/index.js';
+import { loadThisPageAction, loadTagToArticleAction } from '../../actions/index.js';
 import { Link } from 'react-router';
 import './index.less';
 
@@ -18,7 +18,7 @@ export default class Home extends Component {
 		let { articles, articleLen, dispatch } = this.props;
 		if (articles) {
 			return (
-				<div className="right-area" id="right-area" ref="loader" onWheel={ this.loadMoreArticles.bind(this) }>
+				<div className="right-area" id="right-area" ref="loader" onWheel={ this.loadMoreArticles.bind(this) } onTouchMove= { this.loadMoreArticles.bind(this) }>
 					<div className="right-area-wrap">
 						{
 							articles.map((article, index) => {
@@ -31,7 +31,7 @@ export default class Home extends Component {
 									tags = { article.tags }
 									main = { article.main }
 									id = { article.id }
-									showTagToArticle = { this.showTagToArticle.bind(this) }
+									dispatch = { dispatch }
 								/>);
 							})
 						}
@@ -45,12 +45,12 @@ export default class Home extends Component {
 			);
 		}
 	}
+	
 	loadMoreArticles(event) {
 		if (this.EVENT_LISTEN && this.NOW_PAGE) {
-			let loader = this.refs['loader'];
-			let body = document.body;
-			let { dispatch } = this.props;
-			if (loader.scrollHeight - body.scrollTop <= window.innerHeight + 200) {
+		let loader = this.refs['loader'];
+		let { dispatch } = this.props;
+			if (loader.scrollHeight - document.body.scrollTop <= window.innerHeight + 300) {
 				this.EVENT_LISTEN = false;
 				dispatch(loadThisPageAction(++ this.NOW_PAGE));
 				this.EVENT_LISTEN = true;
@@ -58,7 +58,6 @@ export default class Home extends Component {
 		}
 	}
 	componentDidMount() {
-		document.getElementById('right-area').style.left = document.getElementById('move-area') && document.getElementById('move-area').style.left == '300px' ? '600px' : '300px';
 		document.body.scrollTop = 0;
 	}
 	shouldComponentUpdate(nextProps, nextState) {
@@ -66,49 +65,5 @@ export default class Home extends Component {
 			return false;
 		}
 		return true;
-	}
-
-	showTagToArticle(tag) {
-		if (!this.lastTag || ( this.lastTag && this.lastTag != tag)) {
-			this.lastTag = tag;
-			this.props.dispatch(loadTagToArticleAction(tag));
-
-			// 左侧滚动逻辑
-			let box = document.getElementById('move-area');
-			let rightBox = document.getElementById('right-area');
-			box.style.left = '300px';
-			if (rightBox) {
-				rightBox.style.left = '600px';
-			}
-			let back = document.getElementById('menu-back');
-			let focus = document.getElementById('menu-tag');
-			let text = focus.getElementsByTagName('span')[0];
-			let parent = focus.parentNode;
-			let sbiling = parent.getElementsByTagName('p');
-			back.style.width = '60px';
-			// sbiling 类型数组，不能用forEach
-			for (let i = 0; i < sbiling.length; i++) {
-				if (focus !== sbiling[i]) {
-					sbiling[i].style.width = '40px';
-					sbiling[i].style.opacity = '1';
-					sbiling[i].getElementsByTagName('span')[0].style.opacity = '0';
-				}
-			}
-			focus.style.width  = '60px';
-			focus.style.opacity = '0.85';
-			text.style.opacity = '1';
-			// 区域
-			let showContent = document.getElementById('menu-tag-content');
-			let showContentParent = showContent.parentNode;
-			let showContentSibiling = showContentParent.childNodes;
-			for (let j = 0; j < showContentSibiling.length; j++) {
-				if (showContent !== showContentSibiling[j]) {
-					showContentSibiling[j].style.opacity = '0';
-					showContentSibiling[j].style.zIndex = '-200';
-				}
-			}
-			showContent.style.zIndex = '0';
-			showContent.style.opacity = '1';
-		}	
 	}
 }

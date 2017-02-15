@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname + '/public'), {
 
 app.get('/', function(req, res) {
 	match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
-		axios.get('http://120.27.120.127:3000/getData').then((data) => {
+		axios.get('https://www.yinxiangyu.com/getData').then((data) => {
 			store.dispatch(loadAction(data.data));
 			const html = renderToString(
 				<Provider store={store}>
@@ -39,6 +39,47 @@ app.get('/', function(req, res) {
 	});
 });
 
+app.get('/albums', function(req, res) {
+	match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
+		axios.get('https://www.yinxiangyu.com/getData').then((data) => {
+			store.dispatch(loadAction(data.data));
+			const html = renderToString(
+				<Provider store={store}>
+					<RoutingContext {...renderProps} />
+				</Provider>
+			);
+			res.send(getIndexRendered(html, data.data));
+		});	
+	});
+});
+
+app.get('/articles/:id', function(req, res) {
+	match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
+		axios.get('https://www.yinxiangyu.com/getData').then((data) => {
+			store.dispatch(loadAction(data.data));
+			const html = renderToString(
+				<Provider store={store}>
+					<RoutingContext {...renderProps} />
+				</Provider>
+			);
+			res.send(getIndexRendered(html, data.data));
+		});	
+	});
+});
+
+app.get('/albums/memory', function(req, res) {
+	match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
+		axios.get('https://www.yinxiangyu.com/getData').then((data) => {
+			store.dispatch(loadAction(data.data));
+			const html = renderToString(
+				<Provider store={store}>
+					<RoutingContext {...renderProps} />
+				</Provider>
+			);
+			res.send(getIndexRendered(html, data.data));
+		});	
+	});
+});
 
 app.listen(5000, function() {
 	console.log('success');

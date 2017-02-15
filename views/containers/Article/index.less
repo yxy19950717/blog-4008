@@ -37,12 +37,12 @@
 		// 标题
 		.article-header {
 			border-left: 5px solid #4d4d4d;
-			padding: 30px 0px 23px 72px;
+			padding: 30px 30px 23px 72px;
 		}
 		// 内容
 		.article-entry {
 			line-height: 1.8em;
-			padding-right: 30px;
+			padding-right: 60px;
 			padding-left: 76px;
 			margin-top: 10px;
 			p {
@@ -71,8 +71,38 @@
 		.article-info-index.article-info {
 			padding-top: 20px;
 			height: 25px;
-			margin: 30px 78px 0px 78px;
+			margin: 30px 60px 0px 76px;
 			border-top: 1px solid #ddd;
+		}
+	}
+}
+
+@media screen and (max-width: 768px){
+	.article {
+		margin: 0px;
+		border: none;
+		.article-inner {
+			padding: 10px;
+			padding-bottom: 15px;
+			margin-bottom: 10px;
+			.article-header {
+				border: none;
+				padding: 0;
+			}
+			.article-entry {
+				padding: 0;
+				margin-top: 15px;
+				.article-more-link {
+					margin-top: 10px;
+					margin-left: 0px;
+				}
+			}
+			.article-info-index.article-info {
+				padding: 0;
+				margin: 0;
+				margin-top: 20px;
+				padding-top: 18px;
+			}
 		}
 	}
 }
